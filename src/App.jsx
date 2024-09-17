@@ -6,6 +6,8 @@ export default function App() {
     <div>
       <Header />
       <NoteForm />
+      <h2 className="text-2xl font-semibold mb-2">Notes</h2>
+      <NoteForm />
     </div>
   );
 }
