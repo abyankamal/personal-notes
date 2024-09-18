@@ -36,7 +36,9 @@ function App() {
         deleteNote={deleteNote}
         toggleArchive={toggleArchive}
       />
-      <h2>Catatan Diarsipkan</h2>
+      <h2 className="text-2xl font-semibold my-2 text-center">
+        Catatan Diarsipkan
+      </h2>
       <NoteList
         notes={filteredNotes.filter((note) => note.archived)}
         deleteNote={deleteNote}

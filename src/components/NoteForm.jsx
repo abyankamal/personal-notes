@@ -1,16 +1,33 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function NoteForm() {
+export default function NoteForm({ addNote }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const maxTitleLength = 100;
+  const maxTitleLength = 50;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title.trim() && body.trim()) {
+      const newNote = {
+        id: +new Date(),
+        title,
+        body,
+        archived: false,
+        createdAt: new Date().toISOString(),
+      };
+      addNote(newNote);
+      setTitle("");
+      setBody("");
+    }
+  };
   return (
     <div className="shadow">
       <div className="px-4 py-5 sm:p-3">
         <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-              <form action="#" method="POST" className="space-y-6">
+              <form onSubmit={handleSubmit} method="POST" className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     Judul Notes
