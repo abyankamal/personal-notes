@@ -1,19 +1,23 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import NoteItem from "./NoteItem";
 
-function NoteItem({ note, deleteNote, toggleArchive }) {
+function NoteList({ notes, deleteNote, toggleArchive }) {
+  if (notes.length === 0) {
+    return <p>Tidak ada catatan</p>;
+  }
+
   return (
-    <div className="note-item">
-      <h3>{note.title}</h3>
-      <p>{note.body}</p>
-      <small>Dibuat pada: {new Date(note.createdAt).toLocaleString()}</small>
-      <div>
-        <button onClick={() => deleteNote(note.id)}>Hapus</button>
-        <button onClick={() => toggleArchive(note.id)}>
-          {note.archived ? "Pindahkan" : "Arsipkan"}
-        </button>
-      </div>
+    <div>
+      {notes.map((note) => (
+        <NoteItem
+          key={note.id}
+          note={note}
+          deleteNote={deleteNote}
+          toggleArchive={toggleArchive}
+        />
+      ))}
     </div>
   );
 }
 
-export default NoteItem;
+export default NoteList;

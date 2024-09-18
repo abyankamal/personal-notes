@@ -1,4 +1,5 @@
-export default function Header() {
+/* eslint-disable react/prop-types */
+export default function Header({ setSearchQuery }) {
   return (
     <header className="bg-white">
       <nav
@@ -13,7 +14,7 @@ export default function Header() {
         <div className="flex mt-2 w-1/2 lg:w-1/4">
           <input
             type="text"
-            // onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="cari catatan disini"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:ml-2 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
