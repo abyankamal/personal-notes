@@ -3,7 +3,9 @@ import NoteItem from "./NoteItem";
 
 function NoteList({ notes, deleteNote, toggleArchive }) {
   if (notes.length === 0) {
-    return <p>Tidak ada catatan</p>;
+    return (
+      <p className="text-xl font-normal my-2 text-center">Tidak ada catatan</p>
+    );
   }
 
   return (
